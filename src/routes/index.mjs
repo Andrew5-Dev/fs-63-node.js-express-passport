@@ -2,7 +2,9 @@ import {Router} from 'express'
 import rootRouter from './root.mjs'
 import usersRouter from './users.mjs'
 import loginRouter from './login.mjs'
+/*
 import protectedRouter from './protected.mjs'
+*/
 import articlesRouter from './articles.mjs'
 import basicAuth from '../middlewares/basicAuth.mjs'
 
@@ -25,8 +27,10 @@ router.get('/login', (req, res) => {
 
 router.use('/', rootRouter)
 router.use('/login', loginRouter)
+/*
 router.use('/protected', protectedRouter)
-router.use('/users', basicAuth, usersRouter)
-router.use('/articles', basicAuth, articlesRouter)
+*/
+router.use('/users',  usersRouter)
+router.use('/articles',  articlesRouter)
 
 export default router

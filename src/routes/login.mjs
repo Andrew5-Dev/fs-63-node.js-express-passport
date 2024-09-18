@@ -5,11 +5,11 @@ import {
 } from '../controllers/login.mjs'
 import passport from "passport";
 import {errors} from "celebrate";
-
+import {passportMiddlewarePost, passportMiddlewareGet} from "../middlewares/passport.mjs";
 const loginRouter = Router()
 
 
-loginRouter.post(
+/*loginRouter.post(
   '/',
   passport.authenticate('local', {
     failureFlash: true
@@ -17,20 +17,20 @@ loginRouter.post(
   (req, res) => {
     res.redirect('/protected')
   }
-)
+)*/
 
-loginRouter.get('/', (req, res) => {
+/*loginRouter.get('/', (req, res) => {
   if (req.isAuthenticated()) {
     res.redirect('/protected')
   } else {
     res.render('login')
   }
-})
+})*/
 
-/*loginRouter
+loginRouter
   .route('/')
-  .get(getLoginHandler)
-  .post(postLoginHandler)*/
+  .get(passportMiddlewareGet)
+  .post(passportMiddlewarePost)
 
 
 export default loginRouter

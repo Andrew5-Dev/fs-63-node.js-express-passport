@@ -1,3 +1,4 @@
+/*
 import {Router} from 'express'
 import { authenticateJWT, getLoginHandler, postLoginHandler } from '../controllers/login.mjs'
 import { getProtectedHandler } from '../controllers/protected.mjs'
@@ -13,6 +14,7 @@ protectedRouter.get('/', (req, res) => {
         res.redirect('/login')
     }
 })
+*/
 
 
 
@@ -26,4 +28,5 @@ protectedRouter.route('/protected')
   .get(getProtectedHandler)*/
 
 
-export default protectedRouter
+/*
+export default protectedRouter*/

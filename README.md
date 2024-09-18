@@ -17,7 +17,8 @@ Run Production Server:
 
 Main Server routes:
 
-'/users' Mongo DB Integration GET, POST, DELETE, PUT requests
+'/login' - Щоб отримати доступ до спискую юзерів потрібно залогінитись використовуючи логін та пароль.
+Логіни та паролі зберігаються в БД. src\db\usersDB.mjs
 
 For test requests: POSTMAN https://www.postman.com
 

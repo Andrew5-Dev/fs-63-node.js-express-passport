@@ -38,8 +38,6 @@ passport.use( new LocalStrategy((username, password, done) => {    const user = 
 }))
 
 
-app.use(express.urlencoded({ extended: true }))
-
 app.use(
     session({
         secret: 'secret_key',
@@ -50,7 +48,7 @@ app.use(
 
 app.use(flash())
 app.use(passport.initialize())
-app.use(passport.session())
+app.use(passport.session( {  } ))
 
 passport.serializeUser((user, done) => {
     done(null, user.id)
@@ -69,6 +67,7 @@ app.engine('ejs', ejs.renderFile);
 app.set('views-ejs', './src/views');
 
 app.use(bodyParser.json())
+app.use(session(sessionOptions))
 app.use(errorHandler)
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
