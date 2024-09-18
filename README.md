@@ -17,9 +17,7 @@ Run Production Server:
 
 Main Server routes:
 
-'/' 
-
-'/login' Passport authentication with Local Strategy by usersDB
+'/users' Mongo DB Integration GET, POST, DELETE, PUT requests
 
 For test requests: POSTMAN https://www.postman.com
 

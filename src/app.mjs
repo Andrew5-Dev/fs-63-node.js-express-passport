@@ -9,8 +9,14 @@ import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
 import flash from 'connect-flash'
 import { getUsers } from './db/usersDB.mjs'
+import { errorHandler } from './middlewares/errorMiddleware.mjs'
+import bodyParser from 'body-parser'
+import dotenv from 'dotenv'
 
-const PORT = 3000
+
+dotenv.config()
+
+const PORT = process.env.PORT || 3000
 const app = express()
 
 const sessionOptions = {
@@ -18,8 +24,7 @@ const sessionOptions = {
     resave: false,
     saveUninitialized: false
 }
-passport.use( new LocalStrategy((username, password, done) => {
-    const user = getUsers().find(user => user.username === username)
+passport.use( new LocalStrategy((username, password, done) => {    const user = getUsers().find(user => user.username === username)
     if (user) {
         if (user.password === password) {
             return done(null, user)
@@ -63,6 +68,8 @@ app.set('views', './src/views')
 app.engine('ejs', ejs.renderFile);
 app.set('views-ejs', './src/views');
 
+app.use(bodyParser.json())
+app.use(errorHandler)
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(express.json())

@@ -1,3 +1,4 @@
+/*
 import { getUsers, getUserById } from '../db/usersDB.mjs'
 
 const getUsersHandler = (req, res) => {
@@ -33,4 +34,4 @@ export {
     postUsersHandler,
     getUserByIdHandler,
     putUserByIdHandler,
-    deleteUserByIdHandler}
+    deleteUserByIdHandler}*/
