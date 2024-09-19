@@ -19,11 +19,7 @@ dotenv.config()
 const PORT = process.env.PORT || 3000
 const app = express()
 
-const sessionOptions = {
-    secret: 'secret_key',
-    resave: false,
-    saveUninitialized: false
-}
+
 passport.use( new LocalStrategy((username, password, done) => {    const user = getUsers().find(user => user.username === username)
     if (user) {
         if (user.password === password) {
@@ -67,7 +63,6 @@ app.engine('ejs', ejs.renderFile);
 app.set('views-ejs', './src/views');
 
 app.use(bodyParser.json())
-app.use(session(sessionOptions))
 app.use(errorHandler)
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
